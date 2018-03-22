@@ -22,5 +22,11 @@ namespace BackEndCapstone.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        public DbSet<BackEndCapstone.Models.Team> Team { get; set; }
+
+        public DbSet<BackEndCapstone.Models.Player> Player { get; set; }
+
+        public DbSet<BackEndCapstone.Models.PlayerAttribute> PlayerAttribute { get; set; }
     }
 }

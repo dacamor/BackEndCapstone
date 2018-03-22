@@ -23,5 +23,6 @@ namespace BackEndCapstone.Models
         [StringLength(255)]
         public string PhotoName { get; set; }
 
+        public virtual ICollection<Player> Player { get; set; }
     }
 }

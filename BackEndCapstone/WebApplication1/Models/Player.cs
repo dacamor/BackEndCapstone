@@ -20,6 +20,7 @@ namespace BackEndCapstone.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [Display(Name = "Team")]
         public int TeamId { get; set; }
         public Team Team { get; set; }
 

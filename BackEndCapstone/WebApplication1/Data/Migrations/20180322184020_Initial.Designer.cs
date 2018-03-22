@@ -11,9 +11,10 @@ using System;
 namespace BackEndCapstone.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180322184020_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,71 +70,6 @@ namespace BackEndCapstone.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("BackEndCapstone.Models.Player", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(20);
-
-                    b.Property<string>("LastName")
-                        .HasMaxLength(20);
-
-                    b.Property<string>("PhotoName")
-                        .HasMaxLength(255);
-
-                    b.Property<int>("TeamId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TeamId");
-
-                    b.ToTable("Player");
-                });
-
-            modelBuilder.Entity("BackEndCapstone.Models.PlayerAttribute", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("PlayerId");
-
-                    b.Property<string>("Stat")
-                        .IsRequired()
-                        .HasMaxLength(55);
-
-                    b.Property<int>("Value");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlayerId");
-
-                    b.ToTable("PlayerAttribute");
-                });
-
-            modelBuilder.Entity("BackEndCapstone.Models.Team", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Losses");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(55);
-
-                    b.Property<string>("PhotoName")
-                        .HasMaxLength(255);
-
-                    b.Property<int>("Wins");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Team");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -242,22 +178,6 @@ namespace BackEndCapstone.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("BackEndCapstone.Models.Player", b =>
-                {
-                    b.HasOne("BackEndCapstone.Models.Team", "Team")
-                        .WithMany("Player")
-                        .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("BackEndCapstone.Models.PlayerAttribute", b =>
-                {
-                    b.HasOne("BackEndCapstone.Models.Player", "Player")
-                        .WithMany("PlayerAttributes")
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

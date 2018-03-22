@@ -17,6 +17,7 @@ namespace BackEndCapstone.Models
         public string Stat { get; set; }
         public int Value { get; set; }
 
+        [Display(Name = "Player")]
         public int PlayerId { get; set; }
         public Player Player { get; set; }
     }
